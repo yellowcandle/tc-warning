@@ -27,7 +27,8 @@ def check_typhoon_signal(wind_speeds):
 def main():
     st.title("而家掛得八號風球未？")
 
-    st.write("呢個 app 會 check 而家有冇八號風球。")
+    st.write("呢個 app 會 check 而家掛得八號風球未？。")
+    st.markdown("**注意：** 呢個 app 只係用嚟娛樂，唔係專業嘅氣象預測。準則來自：[香港天文台：發出 3 號和 8 號信號的參考指標](https://www.hko.gov.hk/tc/informtc/tcsignal3_ref.htm)")
 
     if st.button("Check 八號風球"):
         url = 'https://data.weather.gov.hk/weatherAPI/hko_data/regional-weather/latest_10min_wind.csv'
