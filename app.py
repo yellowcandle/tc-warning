@@ -36,9 +36,9 @@ def main():
             wind_speeds = get_wind_speeds(data)
 
         if check_typhoon_signal(wind_speeds):
-            st.error("而家掛八號風球啦！")
+            st.error("而家掛得八號風球啦！")
         else:
-            st.success("而家未掛八號風球。")
+            st.success("而家未掛得八號風球。")
 
         st.subheader("而家嘅風速")
         station_mapping = {
