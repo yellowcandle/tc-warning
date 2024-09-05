@@ -94,7 +94,7 @@ def main():
         # Display typhoon warning details if any signal is in force
         if signal_code != 'CANCEL':
             st.subheader("現時颱風警告")
-            st.markdown(f"**熱帶氣旋警告信號：** {signal_name}")
+            st.markdown(f"**{signal_name}**")
         # Compare wind speed data with actual warnings
         wind_speed_criteria_met = gale_force_wind_count >= 4
         st.subheader("風速分析")
