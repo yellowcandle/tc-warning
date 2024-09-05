@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # Define the threshold for strong and gale-force winds in knots
-STRONG_WIND_THRESHOLD = 22  # Approx. 41 km/h
+STRONG_WIND_THRESHOLD = 41  # Approx. 41 km/h
 GALE_FORCE_WIND_THRESHOLD = 63  # Approx. 63 km/h
 
 @st.cache_data(ttl=600)  # Cache for 10 minutes
@@ -55,7 +55,15 @@ def main():
     st.title("而家掛得八號風球未？")
 
     st.write("呢個 app 會 check 而家掛得八號風球未？。")
-    st.markdown("**注意：** 呢個 app 只係用嚟娛樂，唔係專業嘅氣象預測。準則來自：[香港天文台：發出 3 號和 8 號信號的參考指標](https://www.hko.gov.hk/tc/informtc/tcsignal3_ref.htm)")
+    st.markdown("""
+    **注意：** 呢個 app 只係用嚟娛樂，唔係專業嘅氣象預測。
+
+    > 自二零零七年起，天文台在考慮發出3號和8號熱帶氣旋警告信號時，會參考由八個涵蓋全港並接近海平面的參考測風站組成的網絡所錄得的風力資料。下圖顯示現時的參考測風站網絡。
+    > 
+    > 當參考網絡中半數或以上的測風站錄得或預料錄得的持續風速達到有關的風速限值，且風勢可能持續時，則會發出3號或8號信號。3號信號風速範圍為每小時41至62公里，而8號信號則為每小時63至117公里。
+    
+    準則來自：[香港天文台：發出 3 號和 8 號信號的參考指標](https://www.hko.gov.hk/tc/informtc/tcsignal3_ref.htm)
+    """)
 
     if st.button("Check 八號風球"):
         with st.spinner("搵緊風速數據同警告信息..."):
