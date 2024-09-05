@@ -54,7 +54,7 @@ def get_typhoon_signal(warnings):
 def main():
     st.title("而家掛得八號風球未？")
 
-    st.write("呢個 app 會 check 而家掛得八號風球未？。")
+    st.write("呢個 app 會 check 而家掛得八號風球未？天文台嘅 8 中 4 準則究竟有幾準？")
     st.markdown("""
     **注意：** 呢個 app 只係用嚟娛樂，唔係專業嘅氣象預測。
 
