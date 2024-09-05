@@ -56,9 +56,12 @@ def main():
         col1, col2, col3, col4 = st.columns(4)
         for i, row in df.iterrows():
             with eval(f"col{i%4+1}"):
+                wind_speed = row['10-Minute Mean Speed(km/hour)']
+                delta_color = "normal" if wind_speed >= 63 else "off"
                 st.metric(
                     label=station_mapping[row['Automatic Weather Station']],
-                    value=f"{row['10-Minute Mean Speed(km/hour)']:.1f} km/h"
+                    value=f"{wind_speed:.1f} km/h",
+                    delta_color=delta_color
                 )
 
 if __name__ == '__main__':
