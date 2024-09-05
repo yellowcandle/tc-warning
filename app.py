@@ -107,9 +107,9 @@ def main():
         wind_speed_criteria_met = gale_force_wind_count >= 4
         st.subheader("風速分析")
         if wind_speed_criteria_met:
-            st.warning(f"現時有 {gale_force_wind_count} 個測站錄得烈風或以上風速 (≥ 63 km/h)，達到發出八號風球的其中一項準則。")
+            st.warning(f"現時有 {gale_force_wind_count} 個測風站錄得烈風或以上風速 (≥ 63 km/h)，達到發出八號風球的其中一項準則。")
         else:
-            st.info(f"現時有 {gale_force_wind_count} 個測站錄得烈風或以上風速 (≥ 63 km/h)，未達到發出八號風球的準則。")
+            st.info(f"現時有 {gale_force_wind_count} 個測風站錄得烈風或以上風速 (≥ 63 km/h)，未達到發出八號風球的準則。")
 
         if signal_code.startswith('TC8') and not wind_speed_criteria_met:
             st.warning("雖然風速未達標準，但天文台已發出八號風球。可能基於其他考慮因素，如預測風速增強等。")
