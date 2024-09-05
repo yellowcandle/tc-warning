@@ -25,24 +25,40 @@ def check_typhoon_signal(wind_speeds):
     return gale_force_wind_count >= 4
 
 def main():
-    st.title("Hong Kong Typhoon Signal Checker")
+    st.title("而家掛得八號風球未？")
 
-    st.write("This app checks if the No. 8 typhoon signal is in effect based on current wind speeds.")
+    st.write("呢個 app 會 check 而家有冇八號風球。")
 
-    if st.button("Check Typhoon Signal"):
+    if st.button("Check 八號風球"):
         url = 'https://data.weather.gov.hk/weatherAPI/hko_data/regional-weather/latest_10min_wind.csv'
-        with st.spinner("Fetching wind data..."):
+        with st.spinner("搵緊風速數據..."):
             data = fetch_data(url)
             wind_speeds = get_wind_speeds(data)
 
         if check_typhoon_signal(wind_speeds):
-            st.error("The No. 8 typhoon signal is in effect.")
+            st.error("而家掛八號風球啦！")
         else:
-            st.success("The No. 8 typhoon signal is not in effect.")
+            st.success("而家未掛八號風球。")
 
-        st.subheader("Wind Speeds at Selected Stations")
-        df = data[data['Automatic Weather Station'].isin(['Kai Tak', 'Tsing Yi', 'Cheung Chau', 'Sha Tin', 'Lau Fau Shan', 'Ta Kwu Ling', 'Chek Lap Kok', 'Sai Kung'])]
-        st.dataframe(df[['Automatic Weather Station', '10-Minute Mean Speed(km/hour)']])
+        st.subheader("而家嘅風速")
+        station_mapping = {
+            'Kai Tak': '啟德',
+            'Tsing Yi': '青衣',
+            'Cheung Chau': '長洲',
+            'Sha Tin': '沙田',
+            'Lau Fau Shan': '流浮山',
+            'Ta Kwu Ling': '打鼓嶺',
+            'Chek Lap Kok': '赤鱲角',
+            'Sai Kung': '西貢'
+        }
+        df = data[data['Automatic Weather Station'].isin(station_mapping.keys())]
+        col1, col2, col3, col4 = st.columns(4)
+        for i, row in df.iterrows():
+            with eval(f"col{i%4+1}"):
+                st.metric(
+                    label=station_mapping[row['Automatic Weather Station']],
+                    value=f"{row['10-Minute Mean Speed(km/hour)']:.1f} km/h"
+                )
 
 if __name__ == '__main__':
     main()
